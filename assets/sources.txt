@@ -4,3 +4,6 @@
 
 fruit :
 	https://ninjikin.itch.io/fruit
+
+TutiFrutti :
+	https://nikoichu.itch.io/tutti-frutti-demo
