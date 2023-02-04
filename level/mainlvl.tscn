@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://player/Tree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/ressources.tscn" type="PackedScene" id=2]
+[ext_resource path="res://level/EnemyGenerator.gd" type="Script" id=3]
 [ext_resource path="res://level/mainlvl.gd" type="Script" id=4]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -160, -179, 0, 0, 0, 0, 1427, -147, 0, 0, 0, 0, 1471, 857, 0, 0, 0, 0, -227, 868, 0, 0, 0, 0, -175, -165 )
+}
 
 [node name="MainNode" type="Node"]
 script = ExtResource( 4 )
@@ -23,3 +29,18 @@ margin_bottom = 0.0
 
 [node name="Tree" parent="Node2D" instance=ExtResource( 1 )]
 unique_name_in_owner = true
+
+[node name="EnemyGenerator" type="Path2D" parent="Node2D/Tree"]
+position = Vector2( -469, -261 )
+curve = SubResource( 1 )
+script = ExtResource( 3 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Node2D/Tree/EnemyGenerator"]
+position = Vector2( 659.062, 862.26 )
+rotation = 3.13506
+offset = 3383.89
+
+[node name="Timer" type="Timer" parent="Node2D/Tree/EnemyGenerator"]
+autostart = true
+
+[connection signal="timeout" from="Node2D/Tree/EnemyGenerator/Timer" to="Node2D/Tree/EnemyGenerator" method="_on_Timer_timeout"]

@@ -7,8 +7,11 @@ extends KinematicBody2D
 export var SPEED = 20;
 export var LIFE = 2;
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+
 	pass # Replace with function body.
 
 func take_dommage(val):
@@ -18,10 +21,10 @@ func take_dommage(val):
 
 func _physics_process(delta):
 	var direction = Vector2()
-	var player = get_node("%Tree")
-	direction =  player.global_position - global_position
 	
-	look_at(player.global_position)
+	direction =  Autoload.player_position - global_position
+	
+	look_at(Autoload.player_position)
 
 
 	scale.y = sign(direction.x)
@@ -29,4 +32,3 @@ func _physics_process(delta):
 	
 	direction = direction.normalized() * SPEED
 	move_and_slide(direction)
-	pass

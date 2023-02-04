@@ -20,8 +20,9 @@ func _shoot():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+
+	pass
 
 func _physics_process(delta):
 	move_direction = Vector2(0, 0)
@@ -40,3 +41,5 @@ func _physics_process(delta):
 
 	$GrassMap.material.set_shader_param("playerMove", (position - init_position))
 	
+	# update position for enemys
+	Autoload.player_position = global_position
