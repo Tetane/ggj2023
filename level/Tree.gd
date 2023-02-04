@@ -1,8 +1,21 @@
 extends KinematicBody2D
-
+var rng = RandomNumberGenerator.new()
 
 onready var weapon1 = preload("res://weapons/weapon1/weapon1.tscn")
-
+onready var musicarray = [ preload("res://soundeffects/plop/plop1.mp3"),
+ preload("res://soundeffects/plop/plop2.mp3"),
+ preload("res://soundeffects/plop/plop3.mp3"),
+ preload("res://soundeffects/plop/plop3.mp3"),
+ preload("res://soundeffects/plop/plop4.mp3"),
+ preload("res://soundeffects/plop/plop5.mp3"),
+ preload("res://soundeffects/plop/plop6.mp3"),
+ preload("res://soundeffects/plop/plop7.mp3"),
+ preload("res://soundeffects/plop/plop8.mp3"),
+ preload("res://soundeffects/plop/plop9.mp3"),
+ preload("res://soundeffects/plop/plop10.mp3"),
+ preload("res://soundeffects/plop/plop11.mp3"),
+ preload("res://soundeffects/plop/plop12.mp3")
+]
 var move_direction := Vector2(0,0)
 var SPEED := 5
 onready var init_position := position
@@ -39,6 +52,7 @@ func decrease_light():
 	light -= 1
 	emit_signal("light_change", light)	
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$WeaponTimer.connect("timeout", self, "_shoot")
@@ -49,6 +63,9 @@ func _shoot():
 	bulletInstance.global_position = global_position
 #	get_tree().root.add_child(bulletInstance)
 	owner.add_child(bulletInstance)
+	
+	$WeaponAudio.stream = musicarray[rng.randi_range(0,11)]
+	$WeaponAudio.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

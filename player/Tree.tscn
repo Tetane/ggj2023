@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://level/Tree.gd" type="Script" id=1]
 [ext_resource path="res://Assets/tree96x96transparent.png" type="Texture" id=2]
 [ext_resource path="res://Assets/grass.png" type="Texture" id=3]
+[ext_resource path="res://soundeffects/plop/plop1.mp3" type="AudioStream" id=4]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -96,6 +97,10 @@ autostart = true
 [node name="WaterTimer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
+
+[node name="WeaponAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = 1.0
 
 [connection signal="timeout" from="LightTimer" to="." method="decrease_light"]
 [connection signal="timeout" from="EarthTimer" to="." method="decrease_earth"]
