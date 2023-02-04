@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://player/Tree.tscn" type="PackedScene" id=1]
+[ext_resource path="res://enemys/enemy1/enemy1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://enemys/enemy1/enemy1.gd" type="Script" id=3]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Tree" parent="." instance=ExtResource( 1 )]
+unique_name_in_owner = true
+
+[node name="Enemy1" parent="." instance=ExtResource( 2 )]
+script = ExtResource( 3 )
+SPEED = 200
+
+[node name="Enemy2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 48, 454 )
+script = ExtResource( 3 )
+SPEED = 200
