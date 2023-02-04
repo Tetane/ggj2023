@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec4 waterColor: hint_color;
+
+void fragment(){
+	vec4 col = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x + sin(SCREEN_UV.y * 80.0 + TIME*2.0) * 0.05 * (0.5-abs(UV.x-0.5)), SCREEN_UV.y + sin(SCREEN_UV.x * 90.0 + TIME*2.0) * 0.07 * (0.5-abs(UV.x-0.5))));
+	//float waterAlpha = sin(SCREEN_UV.y * 80.0 + TIME) * 0.5 + sin(SCREEN_UV.x * 90.0 + TIME) * 0.5;
+	col = mix(col, waterColor, clamp((0.5-distance(vec2(0.5), UV))*1.5,0.0,1.0));
+	COLOR = col;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/waterColor = Color( 0, 0.811765, 1, 1 )
+
+[node name="Sprite" type="Sprite"]
+material = SubResource( 2 )
+scale = Vector2( 1.74609, 1.65625 )
+texture = ExtResource( 1 )
