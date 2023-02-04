@@ -38,7 +38,11 @@ func _physics_process(delta):
 	
 	move_and_collide(move_direction.normalized() * SPEED)
 #	get_node("%GrassMap").get_material(0).set_shader_param("playerMove", move_direction.normalized() * SPEED)
-
+	if move_direction != Vector2(0,0):
+		$Sprite.material.set_shader_param("running", 1)
+	else:
+		$Sprite.material.set_shader_param("running", 0)
+		
 	$GrassMap.material.set_shader_param("playerMove", (position - init_position))
 	
 	# update position for enemys
