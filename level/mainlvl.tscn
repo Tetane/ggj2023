@@ -43,4 +43,7 @@ offset = 3383.89
 [node name="Timer" type="Timer" parent="Node2D/Tree/EnemyGenerator"]
 autostart = true
 
+[connection signal="earth_change" from="Node2D/Tree" to="CanvasLayer/Control2/Control" method="set_earth"]
+[connection signal="light_change" from="Node2D/Tree" to="CanvasLayer/Control2/Control" method="set_light"]
+[connection signal="water_change" from="Node2D/Tree" to="CanvasLayer/Control2/Control" method="set_water"]
 [connection signal="timeout" from="Node2D/Tree/EnemyGenerator/Timer" to="Node2D/Tree/EnemyGenerator" method="_on_Timer_timeout"]
