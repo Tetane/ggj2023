@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/plop7.mp3-73200a600c2706134b088bf9f9a3e0e9.mp3str"
+
+[deps]
+
+source_file="res://soundeffects/plop/plop7.mp3"
+dest_files=[ "res://.import/plop7.mp3-73200a600c2706134b088bf9f9a3e0e9.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
