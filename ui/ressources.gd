@@ -14,13 +14,13 @@ func _ready():
 	pass # Replace with function body.
 
 func set_water(newval):
-	$VBoxContainer/WaterBox/ProgressBar.value = newval
+	get_node("%WaterProgressBar").value = newval
 	
 func set_earth(newval):
-	$VBoxContainer/EarthBox/ProgressBar.value = newval
+	get_node("%EarthProgressBar").value = newval
 	
 func set_light(newval):
-	$VBoxContainer/LightBox/ProgressBar.value = newval
+	get_node("%LightProgressBar").value = newval
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

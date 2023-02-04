@@ -1,10 +1,23 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://player/Tree.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/ressources.tscn" type="PackedScene" id=2]
 [ext_resource path="res://level/mainlvl.gd" type="Script" id=4]
 
 [node name="MainNode" type="Node"]
 script = ExtResource( 4 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control2" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Control" parent="CanvasLayer/Control2" instance=ExtResource( 2 )]
+anchor_left = 0.0
+anchor_bottom = 1.0
+margin_left = 0.0
+margin_bottom = 0.0
 
 [node name="Node2D" type="Node2D" parent="."]
 
