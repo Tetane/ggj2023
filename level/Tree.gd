@@ -64,7 +64,7 @@ func _shoot():
 #	get_tree().root.add_child(bulletInstance)
 	owner.add_child(bulletInstance)
 	
-	$WeaponAudio.stream = musicarray[rng.randi_range(0,1)]
+	$WeaponAudio.stream = musicarray[rng.randi_range(0,11)]
 	$WeaponAudio.play()
 
 
