@@ -5,6 +5,7 @@ extends Node2D
 # var a = 2
 # var b = "text"
 var SPEED = 500
+export var POWER = 1
 onready var spawnPosition = global_position
 onready var mouseSpawnPosition = get_global_mouse_position()
 
@@ -30,7 +31,10 @@ func delete():
 
 
 func _on_Area2D_body_entered(body):
-	print("pomme touche", body)
-	body.queue_free()
+
+	if body.has_method("take_dommage"):
+		body.take_dommage(POWER)
+		
+	# apple die
 	queue_free()
 	pass # Replace with function body.
