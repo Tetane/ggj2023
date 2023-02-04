@@ -37,10 +37,14 @@ shader_param/playerMove = null
 [sub_resource type="Shader" id=5]
 code = "shader_type canvas_item;
 
-uniform float running = 1;
+uniform float running;
 
 void fragment(){
-	vec4 col = texture(TEXTURE, vec2(UV.x, UV.y + sin(UV.x * 50.0 + TIME*20.0) * 0.03 * running * smoothstep(-UV.y-0.1, -UV.y+0.1, -0.75)));
+	float pumping = 1.0;
+	vec2 animRun = vec2(UV.x, UV.y + sin(UV.x * 50.0 + TIME*20.0) * 0.03 * running * smoothstep(-UV.y-0.1, -UV.y+0.1, -0.75));
+	vec2 animPump = vec2(UV.x, UV.y);
+	vec4 col = texture(TEXTURE, animRun);
+	
 	col *= vec4(1.0,1.0,1.0,1.0-smoothstep(-UV.y-0.1, -UV.y+0.01, -0.95));
 	COLOR = col;
 	
@@ -75,6 +79,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( -1, 28 )
 shape = SubResource( 4 )
 __meta__ = {

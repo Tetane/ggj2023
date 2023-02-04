@@ -15,6 +15,7 @@ func _ready():
 	pass # Replace with function body.
 
 func take_dommage(val):
+	$AnimationPlayer.play("takeDamage")
 	LIFE -= val
 	if LIFE <= 0:
 		queue_free()
