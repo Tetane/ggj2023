@@ -27,3 +27,10 @@ func _physics_process(delta):
 
 func delete():
 	queue_free()
+
+
+func _on_Area2D_body_entered(body):
+	print("pomme touche", body)
+	body.queue_free()
+	queue_free()
+	pass # Replace with function body.
