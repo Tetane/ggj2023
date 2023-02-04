@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://level/Tree.gd" type="Script" id=1]
 [ext_resource path="res://Assets/tree96x96transparent.png" type="Texture" id=2]

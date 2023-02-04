@@ -23,10 +23,12 @@ onready var init_position := position
 signal water_change(newval)
 signal earth_change(newval)
 signal light_change(newval)
+signal life_change(newval);
 
 var water = 100 setget set_water 
 var earth = 100 setget set_earth
 var light = 100 setget set_light
+var life = 100 setget set_life
 
 func set_water(val):
 	water = val
@@ -40,6 +42,10 @@ func set_light(val):
 	light = val
 	emit_signal("light_change", light)	
 
+func set_life(val):
+	life = val
+	emit_signal("life_change", life)	
+
 func decrease_water():
 	water -= 1
 	emit_signal("water_change", water)
@@ -51,6 +57,10 @@ func decrease_earth():
 func decrease_light():
 	light -= 1
 	emit_signal("light_change", light)	
+
+func decrease_life(dmg):
+	life -= dmg
+	emit_signal("life_change", life)	
 
 
 # Called when the node enters the scene tree for the first time.
@@ -67,6 +77,8 @@ func _shoot():
 	$WeaponAudio.stream = musicarray[rng.randi_range(0,11)]
 	$WeaponAudio.play()
 
+func take_damage(val):
+	set_life(life - val)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -86,6 +98,9 @@ func _physics_process(delta):
 		move_direction.x = 1
 	
 	move_and_collide(move_direction.normalized() * SPEED)
+	
+	
+	
 #	get_node("%GrassMap").get_material(0).set_shader_param("playerMove", move_direction.normalized() * SPEED)
 	if move_direction != Vector2(0,0):
 		$Sprite.material.set_shader_param("running", 1)
