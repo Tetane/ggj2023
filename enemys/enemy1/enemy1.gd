@@ -23,7 +23,8 @@ func _physics_process(delta):
 	
 	look_at(player.global_position)
 
-	$Icon.flip_v = direction.x < 0
+
+	scale.y = sign(direction.x)
 		
 	
 	direction = direction.normalized() * SPEED

@@ -15,5 +15,8 @@ SPEED = 103
 [node name="Enemy2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 48, 454 )
 
+[node name="Enemy3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 855, 278 )
+
 [node name="Sprite" parent="." instance=ExtResource( 3 )]
 position = Vector2( 412, 62 )

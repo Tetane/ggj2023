@@ -5,8 +5,8 @@
 [ext_resource path="res://soundeffects/br_chain_saw-75453.mp3" type="AudioStream" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 5.99996
-height = 24.0001
+radius = 9.99995
+height = 28.0001
 
 [node name="Enemy_1" type="KinematicBody2D"]
 collision_layer = 2
@@ -20,7 +20,7 @@ texture = ExtResource( 1 )
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -12, 6 )
+position = Vector2( -11, 2 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
