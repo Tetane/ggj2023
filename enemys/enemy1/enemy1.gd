@@ -17,6 +17,10 @@ func _physics_process(delta):
 	var player = get_node("%Tree")
 	direction =  player.global_position - global_position
 	
+	look_at(player.global_position)
+
+	$Icon.flip_v = direction.x < 0
+		
 	
 	direction = direction.normalized() * SPEED
 	move_and_slide(direction)

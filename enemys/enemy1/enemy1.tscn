@@ -1,16 +1,27 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Assets/enemys/chain_saw.png" type="Texture" id=1]
+[ext_resource path="res://enemys/enemy1/enemy1.gd" type="Script" id=2]
+[ext_resource path="res://soundeffects/br_chain_saw-75453.mp3" type="AudioStream" id=3]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 29.2746
+[sub_resource type="CapsuleShape2D" id=1]
+height = 48.0
 
 [node name="Enemy_1" type="KinematicBody2D"]
 collision_layer = 2
 collision_mask = 7
+script = ExtResource( 2 )
 
 [node name="Icon" type="Sprite" parent="."]
+position = Vector2( 0, -5.96046e-08 )
+scale = Vector2( 0.111883, 0.111883 )
 texture = ExtResource( 1 )
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
 shape = SubResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
