@@ -1,9 +1,7 @@
 extends KinematicBody2D
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+onready var weapon1 = preload("res://weapons/weapon1/weapon1.tscn")
 
 var move_direction := Vector2(0,0)
 var SPEED := 5
@@ -11,7 +9,14 @@ onready var init_position := position
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$WeaponTimer.connect("timeout", self, "_shoot")
+
+
+func _shoot():
+	var bulletInstance: Node2D = weapon1.instance()
+	bulletInstance.global_position = global_position
+#	get_tree().root.add_child(bulletInstance)
+	owner.add_child(bulletInstance)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,3 +39,4 @@ func _physics_process(delta):
 #	get_node("%GrassMap").get_material(0).set_shader_param("playerMove", move_direction.normalized() * SPEED)
 
 	$GrassMap.material.set_shader_param("playerMove", (position - init_position))
+	
