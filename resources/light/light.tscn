@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform sampler2D gradient;
+const float PI = 3.14159;
+uniform float spinSpeed;
+uniform vec3 colorRGB;
+
+void fragment(){
+	float grad = clamp(1.0 - texture(gradient, UV).r -0.2, 0.0, 1.0);
+	vec2 st = vec2( atan(UV.x -0.5, UV.y -0.5) , length(UV-0.5) );
+    vec2 uv = vec2( st.x / PI * 1.0 + TIME*spinSpeed , st.y );
+    
+    float x = uv.x * 6.0f;
+    float m = min( fract(x) , fract(1.0-x) ); // 0.0f ~ 0.5f : remember this expression
+    float c = smoothstep( -0.2, 0.02 , m * 0.3f + 0.1 - uv.y );	// zig zag partten
+	COLOR = vec4(colorRGB + texture(SCREEN_TEXTURE, SCREEN_UV).rgb*1.5, c * 0.7);
+}"
+
+[sub_resource type="Gradient" id=2]
+interpolation_mode = 2
+
+[sub_resource type="GradientTexture2D" id=3]
+gradient = SubResource( 2 )
+fill = 1
+fill_from = Vector2( 0.5, 0.5 )
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 1 )
+shader_param/spinSpeed = -0.15
+shader_param/colorRGB = Vector3( 1, 1, 1 )
+shader_param/gradient = SubResource( 3 )
+
+[sub_resource type="StreamTexture" id=5]
+flags = 4
+load_path = "res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex"
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 1 )
+shader_param/spinSpeed = 0.05
+shader_param/colorRGB = Vector3( 1, 1, 0.5 )
+shader_param/gradient = SubResource( 3 )
+
+[sub_resource type="StreamTexture" id=7]
+flags = 4
+load_path = "res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex"
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 4 )
+scale = Vector2( 2, 2 )
+texture = SubResource( 5 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+material = SubResource( 6 )
+scale = Vector2( 2, 2 )
+texture = SubResource( 7 )
