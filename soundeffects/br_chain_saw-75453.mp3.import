@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/br_chain_saw-75453.mp3-7adc43addfc962db49d56283e8759856.mp3str"
+
+[deps]
+
+source_file="res://soundeffects/br_chain_saw-75453.mp3"
+dest_files=[ "res://.import/br_chain_saw-75453.mp3-7adc43addfc962db49d56283e8759856.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

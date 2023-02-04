@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/lighting-a-fire-14421.mp3-2bae5968be4c9f37f7ac1c5c2d77346c.mp3str"
+
+[deps]
+
+source_file="res://soundeffects/lighting-a-fire-14421.mp3"
+dest_files=[ "res://.import/lighting-a-fire-14421.mp3-2bae5968be4c9f37f7ac1c5c2d77346c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
