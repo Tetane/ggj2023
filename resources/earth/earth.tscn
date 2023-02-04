@@ -1,3 +1,46 @@
-[gd_scene format=2]
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform sampler2D noiseTex;
+uniform sampler2D vignette;
+uniform vec4 earthColor: hint_color;
+
+void fragment(){
+	vec4 col = texture(noiseTex, SCREEN_UV*10.0) * earthColor;
+	
+	float fade = texture(vignette, UV).r;
+	
+	col.a = col.r*2.0;
+	COLOR = col * clamp((1.5-fade * 2.0),0.0,1.0);
+}"
+
+[sub_resource type="OpenSimplexNoise" id=2]
+
+[sub_resource type="NoiseTexture" id=3]
+seamless = true
+noise = SubResource( 2 )
+
+[sub_resource type="Gradient" id=5]
+interpolation_mode = 2
+
+[sub_resource type="GradientTexture2D" id=6]
+gradient = SubResource( 5 )
+fill = 1
+fill_from = Vector2( 0.5, 0.5 )
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 1 )
+shader_param/earthColor = Color( 0.505882, 0.25098, 0, 1 )
+shader_param/noiseTex = SubResource( 3 )
+shader_param/vignette = SubResource( 6 )
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 4 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )

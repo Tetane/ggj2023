@@ -40,7 +40,9 @@ uniform float running = 1;
 
 void fragment(){
 	vec4 col = texture(TEXTURE, vec2(UV.x, UV.y + sin(UV.x * 50.0 + TIME*20.0) * 0.03 * running * smoothstep(-UV.y-0.1, -UV.y+0.1, -0.75)));
+	col *= vec4(1.0,1.0,1.0,1.0-smoothstep(-UV.y-0.1, -UV.y+0.01, -0.95));
 	COLOR = col;
+	
 }"
 
 [sub_resource type="ShaderMaterial" id=6]
