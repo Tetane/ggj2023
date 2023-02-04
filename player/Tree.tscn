@@ -80,4 +80,21 @@ __meta__ = {
 current = true
 
 [node name="WeaponTimer" type="Timer" parent="."]
+wait_time = 0.2
 autostart = true
+
+[node name="LightTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="EarthTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="WaterTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="LightTimer" to="." method="decrease_light"]
+[connection signal="timeout" from="EarthTimer" to="." method="decrease_earth"]
+[connection signal="timeout" from="WaterTimer" to="." method="decrease_water"]

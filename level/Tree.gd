@@ -7,6 +7,38 @@ var move_direction := Vector2(0,0)
 var SPEED := 5
 onready var init_position := position
 
+signal water_change(newval)
+signal earth_change(newval)
+signal light_change(newval)
+
+var water = 100 setget set_water 
+var earth = 100 setget set_earth
+var light = 100 setget set_light
+
+func set_water(val):
+	water = val
+	emit_signal("water_change", water)
+
+func set_earth(val):
+	earth = val
+	emit_signal("earth_change", earth)
+	
+func set_light(val):
+	light = val
+	emit_signal("light_change", light)	
+
+func decrease_water():
+	water -= 1
+	emit_signal("water_change", water)
+
+func decrease_earth():
+	earth  -= 1
+	emit_signal("earth_change", earth)
+	
+func decrease_light():
+	light -= 1
+	emit_signal("light_change", light)	
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$WeaponTimer.connect("timeout", self, "_shoot")
