@@ -22,3 +22,4 @@ margin_bottom = 0.0
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Tree" parent="Node2D" instance=ExtResource( 1 )]
+unique_name_in_owner = true
