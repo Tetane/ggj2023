@@ -72,7 +72,7 @@ func decrease_life(dmg):
 	emit_signal("life_change", life)
 
 func weapon_increase_speed(delta):
-	$WeaponTimer.wait_time -= delta
+	$WeaponTimer.wait_time -= clamp(delta, 0.1, 10000.0)
 
 func level_up(levelgained):
 	add_child(levelupanimation.instance())

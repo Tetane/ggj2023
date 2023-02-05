@@ -9,6 +9,8 @@ var game_over = false
 var totalxp = 0
 var currentxp = 0
 var level = 0
+onready var initWatTime = get_node("../MainNode/Node2D/Tree/EnemyGenerator/Timer").wait_time
+var minWaitTime = 0.2
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -34,4 +36,5 @@ func gain_xp(xp):
 		get_node("../MainNode/CanvasLayer/Control2/Control").set_xp(currentxp)
 		get_node("../MainNode/CanvasLayer/Control2/Control").set_max_xp(m+(m/2))
 		get_node("../MainNode/Node2D/Tree").level_up(1)
-		get_node("../MainNode/Node2D/Tree/EnemyGenerator/Timer").wait_time -= 0.1
+		initWatTime -= 0.1
+		get_node("../MainNode/Node2D/Tree/EnemyGenerator/Timer").wait_time = clamp(initWatTime, 0.2, 1.0)
