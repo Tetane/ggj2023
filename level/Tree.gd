@@ -51,18 +51,26 @@ func set_life(val):
 func decrease_water():
 	water -= 1
 	emit_signal("water_change", water)
+	if water <= 0:
+		Autoload.player_died()
 
 func decrease_earth():
 	earth  -= 1
 	emit_signal("earth_change", earth)
+	if earth <= 0:
+		Autoload.player_died()
 	
 func decrease_light():
 	light -= 1
 	emit_signal("light_change", light)	
+	if light <= 0:
+		Autoload.player_died()
 
 func decrease_life(dmg):
 	life -= dmg
-	emit_signal("life_change", life)	
+	emit_signal("life_change", life)
+
+	
 
 
 # Called when the node enters the scene tree for the first time.
@@ -81,9 +89,8 @@ func _shoot():
 
 func take_damage(val):
 	set_life(life - val)
-	if life < 0:
+	if life <= 0:
 		Autoload.player_died()
-		#queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
