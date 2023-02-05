@@ -21,6 +21,12 @@ func take_dommage(val):
 		queue_free()
 
 func _physics_process(delta):
+	
+	# check if game over
+	if Autoload.game_over:
+		queue_free()
+		
+	
 	var direction = Vector2()
 	
 	direction =  Autoload.player_position - global_position
@@ -38,3 +44,4 @@ func _physics_process(delta):
 		var collision = get_slide_collision(i)
 		if collision.collider.name == "Tree":
 			collision.collider.take_damage(POWER)
+			

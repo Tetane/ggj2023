@@ -81,6 +81,9 @@ func _shoot():
 
 func take_damage(val):
 	set_life(life - val)
+	if life < 0:
+		Autoload.player_died()
+		#queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -88,6 +91,11 @@ func _process(delta):
 	pass
 
 func _physics_process(delta):
+
+	if Autoload.game_over:
+		$WeaponTimer.stop()
+		return
+
 	move_direction = Vector2(0, 0)
 	
 	if Input.is_action_pressed("move_down"):
@@ -98,6 +106,8 @@ func _physics_process(delta):
 		move_direction.x = -1
 	if Input.is_action_pressed("move_right"):
 		move_direction.x = 1
+	
+
 	
 	move_and_collide(move_direction.normalized() * SPEED)
 	
