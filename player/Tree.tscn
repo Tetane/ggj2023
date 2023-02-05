@@ -71,6 +71,7 @@ radius = 18.0
 [node name="Tree" type="KinematicBody2D"]
 position = Vector2( 469, 261 )
 script = ExtResource( 1 )
+speed_take = 1.0
 
 [node name="GrassMap" type="TileMap" parent="."]
 material = SubResource( 2 )

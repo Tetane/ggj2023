@@ -36,7 +36,7 @@ func tree_exited(body):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if tree != null:
-		tree.recolte(self)
+		tree.recolte(self,delta)
 	
 	# destruct if collide with other ressources
 	if not $Area2D.get_overlapping_areas().empty():
