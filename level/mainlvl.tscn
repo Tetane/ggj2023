@@ -44,7 +44,7 @@ offset = 3383.89
 autostart = true
 
 [node name="RessourcesTimer" type="Timer" parent="Node2D/Tree/EnemyGenerator"]
-wait_time = 0.5
+wait_time = 10.0
 autostart = true
 
 [connection signal="earth_change" from="Node2D/Tree" to="CanvasLayer/Control2/Control" method="set_earth"]
