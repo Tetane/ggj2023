@@ -102,6 +102,9 @@ func _physics_process(delta):
 	if Autoload.game_over:
 		$WeaponTimer.stop()
 		return
+	
+#	$SpriteRoot.look_at(get_global_mouse_position())
+#	$AreaRoot.look_at(get_global_mouse_position())
 
 	move_direction = Vector2(0, 0)
 	
@@ -114,7 +117,8 @@ func _physics_process(delta):
 	if Input.is_action_pressed("move_right"):
 		move_direction.x = 1
 	
-
+#	if Input.is_action_just_pressed("shootRoot"):
+#		$AnimationPlayer.play("rooot")
 	
 	move_and_collide(move_direction.normalized() * SPEED)
 	
