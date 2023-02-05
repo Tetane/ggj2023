@@ -70,8 +70,11 @@ func decrease_life(dmg):
 	life -= dmg
 	emit_signal("life_change", life)
 
-	
+func weapon_increase_speed(delta):
+	$WeaponTimer.wait_time -= delta
 
+func level_up(levelgained):
+	weapon_increase_speed(0.1)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
