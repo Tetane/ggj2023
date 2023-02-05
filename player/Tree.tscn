@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://level/Tree.gd" type="Script" id=1]
 [ext_resource path="res://Assets/tree96x96transparent.png" type="Texture" id=2]
 [ext_resource path="res://Assets/grass.png" type="Texture" id=3]
 [ext_resource path="res://soundeffects/plop/plop1.mp3" type="AudioStream" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=5]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -68,6 +69,26 @@ shader_param/gradient = SubResource( 8 )
 [sub_resource type="CircleShape2D" id=4]
 radius = 18.0
 
+[sub_resource type="Shader" id=9]
+code = "shader_type canvas_item;
+
+uniform vec4 rootColor: hint_color;
+
+// Sinus Signed Distance Function (distance field)
+float sinSDF(vec2 st, float A, float offset, float f, float phi){
+    return abs((st.y - offset) + sin(st.x * f + phi) * A);
+}
+
+void fragment(){
+	float s = sinSDF(UV, 0.2, 0.5, 30.0, 0.0);
+	s = smoothstep(s-0.02,s+0.02, 0.2);
+	COLOR = vec4(vec3(s) * rootColor.rgb, s);
+}"
+
+[sub_resource type="ShaderMaterial" id=10]
+shader = SubResource( 9 )
+shader_param/rootColor = Color( 0.371094, 0.270261, 0.0246429, 1 )
+
 [node name="Tree" type="KinematicBody2D"]
 position = Vector2( 469, 261 )
 script = ExtResource( 1 )
@@ -119,6 +140,14 @@ autostart = true
 [node name="WeaponAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 volume_db = 1.0
+
+[node name="SpriteRoot" type="Sprite" parent="."]
+visible = false
+material = SubResource( 10 )
+position = Vector2( 2, 29 )
+scale = Vector2( 1e-05, 0.328 )
+texture = ExtResource( 5 )
+offset = Vector2( 32, 1.5238 )
 
 [connection signal="timeout" from="LightTimer" to="." method="decrease_light"]
 [connection signal="timeout" from="EarthTimer" to="." method="decrease_earth"]
