@@ -60,11 +60,15 @@ quantity = 10
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 4 )
 scale = Vector2( 2, 2 )
+z_index = -9
+z_as_relative = false
 texture = SubResource( 5 )
 
 [node name="Sprite2" type="Sprite" parent="."]
 material = SubResource( 6 )
 scale = Vector2( 2, 2 )
+z_index = -9
+z_as_relative = false
 texture = SubResource( 7 )
 
 [node name="Area2D" type="Area2D" parent="."]
