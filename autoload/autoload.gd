@@ -29,5 +29,5 @@ func gain_xp(xp):
 		totalxp += currentxp
 		currentxp = 0
 		get_node("../MainNode/CanvasLayer/Control2/Control").set_xp(currentxp)
-		get_node("../MainNode/CanvasLayer/Control2/Control").set_max_xp(m*2)
+		get_node("../MainNode/CanvasLayer/Control2/Control").set_max_xp(m+(m/2))
 		get_node("../MainNode/Node2D/Tree").level_up(1)
