@@ -7,6 +7,7 @@ extends KinematicBody2D
 export var SPEED = 20;
 export var LIFE = 2;
 export var POWER = 1;
+export var XP = 1;
 
 
 # Called when the node enters the scene tree for the first time.
@@ -18,6 +19,7 @@ func take_dommage(val):
 	$AnimationPlayer.play("takeDamage")
 	LIFE -= val
 	if LIFE <= 0:
+		Autoload.gain_xp(XP)
 		queue_free()
 
 func _physics_process(delta):

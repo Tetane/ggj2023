@@ -5,7 +5,6 @@ extends Control
 # var a = 2
 # var b = "text"
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_water(100);
@@ -28,3 +27,12 @@ func set_life(newval):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func set_xp(xp):
+	get_node("%XPProgressBar").value = xp
+
+func set_max_xp(maxxp):
+	get_node("%XPProgressBar").max_value = maxxp
+
+func get_max_xp():
+	return get_node("%XPProgressBar").max_value

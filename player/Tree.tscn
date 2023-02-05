@@ -181,7 +181,6 @@ __meta__ = {
 current = true
 
 [node name="WeaponTimer" type="Timer" parent="."]
-wait_time = 0.2
 autostart = true
 
 [node name="LightTimer" type="Timer" parent="."]
