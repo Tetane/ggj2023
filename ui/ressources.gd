@@ -34,5 +34,10 @@ func set_xp(xp):
 func set_max_xp(maxxp):
 	get_node("%XPProgressBar").max_value = maxxp
 
+func set_level(level):
+	get_node("MarginContainer/VBoxContainer/XPBox/Label").text = "Lvl "+str(level)
+
 func get_max_xp():
 	return get_node("%XPProgressBar").max_value
+	
+
