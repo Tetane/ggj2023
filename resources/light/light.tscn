@@ -1,4 +1,6 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://resources/ressource.gd" type="Script" id=1]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -47,7 +49,12 @@ shader_param/gradient = SubResource( 3 )
 flags = 4
 load_path = "res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex"
 
+[sub_resource type="CircleShape2D" id=8]
+radius = 39.0512
+
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+type = "light"
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 4 )
@@ -58,3 +65,9 @@ texture = SubResource( 5 )
 material = SubResource( 6 )
 scale = Vector2( 2, 2 )
 texture = SubResource( 7 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 8 )
