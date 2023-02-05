@@ -30,6 +30,8 @@ var earth = 100 setget set_earth
 var light = 100 setget set_light
 var life = 100 setget set_life
 
+export var speed_take = 0.1 # vitesse a laquelle on pompe une ressource
+
 func set_water(val):
 	water = val
 	emit_signal("water_change", water)
@@ -111,3 +113,21 @@ func _physics_process(delta):
 	
 	# update position for enemys
 	Autoload.player_position = global_position
+
+
+func recolte(ressource):
+	print("recolte", ressource)
+	# si arbre immobile
+	print(move_direction)
+	if move_direction == Vector2(0,0):
+		print("dont move", move_direction)
+		
+		if ressource.type == "water" and water < 100:
+			ressource.take(speed_take)
+			set_water(water + speed_take)
+		if ressource.type == "earth" and earth < 100:
+			ressource.take(speed_take)
+			set_earth(earth + speed_take)
+		if ressource.type == "light" and light < 100:
+			ressource.take(speed_take)
+			set_light(light + speed_take)
