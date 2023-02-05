@@ -42,7 +42,7 @@ uniform float running;
 void fragment(){
 	float pumping = 1.0;
 	vec2 animRun = vec2(UV.x, UV.y + sin(UV.x * 50.0 + TIME*20.0) * 0.03 * running * smoothstep(-UV.y-0.1, -UV.y+0.1, -0.75));
-	vec2 animPump = vec2(UV.x, UV.y);
+	vec2 animPump = vec2(UV.x, UV.y + 0.03 * smoothstep(-UV.y-0.1, -UV.y+0.1, (sin(TIME)-1.0)/2.0 ));
 	vec4 col = texture(TEXTURE, animRun);
 	
 	col *= vec4(1.0,1.0,1.0,1.0-smoothstep(-UV.y-0.1, -UV.y+0.01, -0.95));
