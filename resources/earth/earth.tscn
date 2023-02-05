@@ -11,7 +11,7 @@ uniform sampler2D vignette;
 uniform vec4 earthColor: hint_color;
 
 void fragment(){
-	vec4 col = texture(noiseTex, SCREEN_UV*10.0) * earthColor;
+	vec4 col = texture(noiseTex, UV*2.0) * earthColor;
 	
 	float fade = texture(vignette, UV).r;
 	
