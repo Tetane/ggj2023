@@ -116,22 +116,22 @@ func _physics_process(delta):
 	Autoload.player_position = global_position
 
 
-func recolte(ressource):
+func recolte(ressource,delta):
 
 	# si arbre immobile
 	if move_direction == Vector2(0,0):
-		
+		var amount = speed_take * delta
 		if ressource.type == "water" and water < 100:
-			ressource.take(speed_take)
-			set_water(water + speed_take)
+			ressource.take(amount)
+			set_water(water + amount)
 			$Sprite.material.set_shader_param("pumping", 1.0)
 		if ressource.type == "earth" and earth < 100:
-			ressource.take(speed_take)
-			set_earth(earth + speed_take)
+			ressource.take(amount)
+			set_earth(earth + amount)
 			$Sprite.material.set_shader_param("pumping", 1.0)
 		if ressource.type == "light" and light < 100:
-			ressource.take(speed_take)
-			set_light(light + speed_take)
+			ressource.take(amount)
+			set_light(light + amount)
 			$Sprite.material.set_shader_param("pumping", 1.0)
 	else:
 		$Sprite.material.set_shader_param("pumping", 0.0)
