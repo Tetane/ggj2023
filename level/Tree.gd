@@ -2,6 +2,7 @@ extends KinematicBody2D
 var rng = RandomNumberGenerator.new()
 
 onready var weapon1 = preload("res://weapons/weapon1/weapon1.tscn")
+onready var levelupanimation = preload("res://ui/levelup.tscn")
 onready var musicarray = [ preload("res://soundeffects/plop/plop1.mp3"),
  preload("res://soundeffects/plop/plop2.mp3"),
  preload("res://soundeffects/plop/plop3.mp3"),
@@ -74,6 +75,7 @@ func weapon_increase_speed(delta):
 	$WeaponTimer.wait_time -= delta
 
 func level_up(levelgained):
+	add_child(levelupanimation.instance())
 	weapon_increase_speed(0.1)
 
 # Called when the node enters the scene tree for the first time.
