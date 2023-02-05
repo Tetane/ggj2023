@@ -16,5 +16,5 @@ func _ready():
 #	pass
 
 func _on_retry():
-	Autoload.game_over=false
+	Autoload.startover()
 	get_tree().reload_current_scene()
