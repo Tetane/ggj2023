@@ -125,9 +125,14 @@ func recolte(ressource):
 		if ressource.type == "water" and water < 100:
 			ressource.take(speed_take)
 			set_water(water + speed_take)
+			$Sprite.material.set_shader_param("pumping", 1.0)
 		if ressource.type == "earth" and earth < 100:
 			ressource.take(speed_take)
 			set_earth(earth + speed_take)
+			$Sprite.material.set_shader_param("pumping", 1.0)
 		if ressource.type == "light" and light < 100:
 			ressource.take(speed_take)
 			set_light(light + speed_take)
+			$Sprite.material.set_shader_param("pumping", 1.0)
+	else:
+		$Sprite.material.set_shader_param("pumping", 0.0)

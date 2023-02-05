@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://level/Tree.gd" type="Script" id=1]
 [ext_resource path="res://Assets/tree96x96transparent.png" type="Texture" id=2]
@@ -38,21 +38,32 @@ shader_param/playerMove = null
 code = "shader_type canvas_item;
 
 uniform float running;
+uniform sampler2D gradient;
+uniform float pumping;
 
 void fragment(){
-	float pumping = 1.0;
 	vec2 animRun = vec2(UV.x, UV.y + sin(UV.x * 50.0 + TIME*20.0) * 0.03 * running * smoothstep(-UV.y-0.1, -UV.y+0.1, -0.75));
-	vec2 animPump = vec2(UV.x, UV.y + 0.03 * smoothstep(-UV.y-0.1, -UV.y+0.1, (sin(TIME)-1.0)/2.0 ));
-	vec4 col = texture(TEXTURE, animRun);
+	vec2 animPump = vec2(UV.x, UV.y + 0.1 * smoothstep(-UV.y-0.1, -UV.y+0.1, (sin(TIME*2.0)-1.0)/2.0 ));
+	vec4 col = texture(TEXTURE, mix(animRun, animPump, pumping));
 	
 	col *= vec4(1.0,1.0,1.0,1.0-smoothstep(-UV.y-0.1, -UV.y+0.01, -0.95));
 	COLOR = col;
 	
 }"
 
+[sub_resource type="Gradient" id=7]
+interpolation_mode = 2
+offsets = PoolRealArray( 0.695161, 0.809677, 0.890323, 0.96129, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.945736, 0.945736, 0.945736, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
+
 [sub_resource type="ShaderMaterial" id=6]
 shader = SubResource( 5 )
 shader_param/running = 1.0
+shader_param/pumping = null
+shader_param/gradient = SubResource( 8 )
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 18.0
