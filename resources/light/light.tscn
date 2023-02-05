@@ -50,11 +50,12 @@ flags = 4
 load_path = "res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex"
 
 [sub_resource type="CircleShape2D" id=8]
-radius = 39.0512
+radius = 44.0
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
 type = "light"
+quantity = 10
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 4 )
@@ -68,6 +69,7 @@ texture = SubResource( 7 )
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 8
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 8 )

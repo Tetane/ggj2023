@@ -12,8 +12,13 @@ var tree=null
 func _ready():
 	$Area2D.connect("body_entered",self,"tree_entered")
 	$Area2D.connect("body_exited",self,"tree_exited")
+	
+
 	pass # Replace with function body.
 
+
+
+	
 func take(val):
 	quantity -= val
 	if quantity <= 0:
@@ -32,3 +37,7 @@ func tree_exited(body):
 func _process(delta):
 	if tree != null:
 		tree.recolte(self)
+	
+	# destruct if collide with other ressources
+	if not $Area2D.get_overlapping_areas().empty():
+		queue_free()

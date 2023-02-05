@@ -116,11 +116,9 @@ func _physics_process(delta):
 
 
 func recolte(ressource):
-	print("recolte", ressource)
+
 	# si arbre immobile
-	print(move_direction)
 	if move_direction == Vector2(0,0):
-		print("dont move", move_direction)
 		
 		if ressource.type == "water" and water < 100:
 			ressource.take(speed_take)
