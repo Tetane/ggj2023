@@ -41,3 +41,9 @@ func _process(delta):
 	# destruct if collide with other ressources
 	if not $Area2D.get_overlapping_areas().empty():
 		queue_free()
+	
+func _physics_process(delta):
+	# check if game over
+	if Autoload.game_over:
+		queue_free()
+		
