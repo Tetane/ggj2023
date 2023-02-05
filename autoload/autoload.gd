@@ -17,9 +17,13 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
+func startover():
+	game_over = false
+	$ChainSaw.stop()
+	
 func player_died():
 	game_over = true
+	$ChainSaw.play()
 	get_node("../MainNode/CanvasLayer/GameOver").visible = true
 
 func gain_xp(xp):

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://musics/creepy-music-box-halloween-music-horror-scary-spooky-dark-ambient-118577.mp3" type="AudioStream" id=1]
 [ext_resource path="res://autoload/autoload.gd" type="Script" id=2]
+[ext_resource path="res://soundeffects/br_chain_saw-75453.mp3" type="AudioStream" id=3]
 
 [node name="Node" type="Node"]
 script = ExtResource( 2 )
@@ -10,3 +11,6 @@ script = ExtResource( 2 )
 stream = ExtResource( 1 )
 volume_db = -20.0
 autoplay = true
+
+[node name="ChainSaw" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
