@@ -31,7 +31,7 @@ var earth = 100 setget set_earth
 var light = 100 setget set_light
 var life = 100 setget set_life
 
-export var speed_take = 0.1 # vitesse a laquelle on pompe une ressource
+export var speed_take = 0.2 # vitesse a laquelle on pompe une ressource
 
 func set_water(val):
 	water = val

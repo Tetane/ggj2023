@@ -92,7 +92,7 @@ shader_param/rootColor = Color( 0.371094, 0.270261, 0.0246429, 1 )
 [node name="Tree" type="KinematicBody2D"]
 position = Vector2( 469, 261 )
 script = ExtResource( 1 )
-speed_take = 1.0
+speed_take = 2.0
 
 [node name="GrassMap" type="TileMap" parent="."]
 material = SubResource( 2 )
